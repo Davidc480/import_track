@@ -12,7 +12,7 @@ const currentDatePostHandler = async (req, res) => {
 
     if (dateVerify) {
       const verifyExistenceDateBdd = await DateEntry.findOne({
-        where: { dateImport: currentDate },
+        where: { dateImport: currentDate, isActive: true },
       });
       if (!verifyExistenceDateBdd) {
         const dateImport = new Date(currentDate);

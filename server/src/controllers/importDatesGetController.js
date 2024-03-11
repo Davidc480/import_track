@@ -1,4 +1,3 @@
-const { where } = require("sequelize");
 const { DateEntry } = require("../database");
 
 const importDatesGetController = async () => {
