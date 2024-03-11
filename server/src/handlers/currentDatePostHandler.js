@@ -8,6 +8,8 @@ const currentDatePostHandler = async (req, res) => {
 
     const dateVerify = verifiDate(currentDate);
 
+    const isActive = true;
+
     if (dateVerify) {
       const verifyExistenceDateBdd = await DateEntry.findOne({
         where: { dateImport: currentDate },
@@ -16,7 +18,8 @@ const currentDatePostHandler = async (req, res) => {
         const dateImport = new Date(currentDate);
         const currentDateController = await currentDatePostController(
           dateImport,
-          importStatus
+          importStatus,
+          isActive
         );
         res.status(200).json(currentDateController);
       } else {

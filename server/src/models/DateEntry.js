@@ -15,6 +15,9 @@ module.exports = (sequelize) => {
       importStatus: {
         type: DataTypes.TEXT,
       },
+      isActive: {
+        type: DataTypes.BOOLEAN,
+      },
     },
     {
       timestamps: false,
