@@ -7,8 +7,11 @@ module.exports = (sequelize) => {
       primaryKey: true,
       autoIncrement: true,
     },
-    dateUpdate: {
+    dateImport: {
       type: DataTypes.DATE,
+    },
+    importStatus: {
+      type: DataTypes.TEXT,
     },
   });
 };

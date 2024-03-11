@@ -1,8 +1,8 @@
 const { Router } = require("express");
-const DataEntryResponse = require("../handler/DateEntrysResponse");
+const dateRouter = require("./Date/importDate");
 
 const router = Router();
 
-router.use("/", DataEntryResponse);
+router.use("/date", dateRouter);
 
 module.exports = router;

@@ -30,7 +30,7 @@ server.use((err, req, res, next) => {
 });
 
 sequelize
-  .sync({ Force: true }) // para resetear la base de datos Force: true
+  .sync({ force: true }) // para resetear la base de datos Force: true
   .then(() => {
     console.log(`Database & tables created`);
     server.listen(port, () => {
