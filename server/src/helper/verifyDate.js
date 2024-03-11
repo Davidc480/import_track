@@ -1,5 +1,5 @@
 const verifiDate = (date) => {
-  const regexDate = /^\d{2}\/\d{2}\/\d{4}$/; // Este regex coincide con el formato YYYY-MM-DD
+  const regexDate = /^\d{4}\/\d{2}\/\d{2}$/; // Este regex coincide con el formato YYYY-MM-DD
 
   if (regexDate.test(date)) {
     return date;

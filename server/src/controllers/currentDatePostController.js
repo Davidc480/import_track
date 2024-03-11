@@ -1,8 +1,9 @@
 const { DateEntry } = require("../database");
 
-const currentDatePostController = async (date) => {
+const currentDatePostController = async (dateImport, importStatus) => {
   const newDateImport = await DateEntry.create({
-    date,
+    dateImport,
+    importStatus,
   });
 
   return newDateImport;
