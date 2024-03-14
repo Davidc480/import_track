@@ -41,4 +41,5 @@
     margin-top: 10px;
     width: 33px;
     height: 33px;
+    z-index: 1;
 }
