@@ -36,6 +36,9 @@
 
 
 .menu{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
     width: 33px;
     height: 33px;
 }

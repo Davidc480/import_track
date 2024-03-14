@@ -6,6 +6,7 @@
   --primary-color: #F7D2D4; 
   --secondary-color: #D1F6EC; 
   --third-color: #F6C1B3;
+  --third-color-transparent: #f6c2b3a9;
 }
 
 @media (prefers-color-scheme: dark) {
