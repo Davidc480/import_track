@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./HeaderMobile.module.css"
+import MenuHamburguer from "../MenuHamburguer/MenuHamburguer";
 
 const HeaderMobile = () => {
     return (
@@ -18,6 +19,7 @@ const HeaderMobile = () => {
                 <h1>Happy Shopcr</h1>
             </div>
             <div className={styles.menu}>
+                <MenuHamburguer />
             </div>
         </div>
     )
