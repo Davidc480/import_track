@@ -58,7 +58,6 @@
 .inputPriceProduct input::placeholder {
     color: #999;
     font-family: var(--font-roboto);
-
 }
 
 .inputPriceProduct .input_container {
