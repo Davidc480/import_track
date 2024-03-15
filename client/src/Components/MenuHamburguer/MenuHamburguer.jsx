@@ -21,7 +21,6 @@ const MenuHamburguer = ()=>{
                 aria-expanded={navButtonActive}
                 aria-label="menú"
                 >
-
                     <div> </div>
                     <div> </div>
                 </button>
@@ -29,13 +28,13 @@ const MenuHamburguer = ()=>{
             <nav>
             <ul className={styles.nav} data-visible={navActive}>
                 <li>
-                    <a href="">Home</a>
+                    <a href="/">Home</a>
                 </li>
                 <li>
                     <a href="">Calculadora</a>
                 </li>
                 <li>
-                    <a href="">Rastrear Pedido</a>
+                    <a href="/OrderTracker">Rastrear Pedido</a>
                 </li>
                 <li>
                     <a href="">Contacto</a>
