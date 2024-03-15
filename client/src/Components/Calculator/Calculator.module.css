@@ -1,0 +1,144 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 60px;
+}
+
+
+.tittle{
+    width: 361px;
+    text-align: center;
+}
+
+
+.tittle h3 {
+    font-family: var(--font-playfair-display);
+    font-size: 28px;
+    text-align: center;
+}
+
+
+.containerText {
+    width: 361px;
+    text-align: center;
+    margin-top: 29px;
+    font-family: var(--font-roboto);
+    font-size: 14px;
+}
+
+.containerText p {
+    text-align: center;
+}
+
+.containerCalculator {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 320px;
+    border-radius: 15px;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: var(--secondary-color);
+    transform: translatex(-10%);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+
+.inputPriceProduct {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputPriceProduct input::placeholder {
+    color: #999;
+    font-family: var(--font-roboto);
+
+}
+
+.inputPriceProduct .input_container {
+    display: flex;
+    align-items: center;
+    align-self: flex-start;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.inputPriceProduct span {
+    font-family: var(--font-roboto);
+    font-size: 12px;
+}
+
+.inputPriceProduct input {
+    width: 216px;
+    height: 31px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 8px;
+    border: none;
+    outline: none;
+    box-shadow: inset 0 -3px 4px rgba(0,0,0, 0.5);
+}
+
+.infoIcon {
+    margin-left: 5px;
+}
+
+.inputTypeProduct {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.inputTypeProduct input::placeholder {
+    color: #999;
+    font-family: var(--font-roboto);
+    padding: 10px;
+}
+
+.inputTypeProduct span {
+    font-family: var(--font-roboto);
+    font-size: 12px;
+    align-self: flex-start;
+    margin-left: 10px;
+}
+
+.inputTypeProduct select {
+    width: 216px;
+    height: 31px;
+    border-radius: 5px;
+    margin-top: 8px;
+    border: none;
+    outline: none;
+    background-color: white;
+    box-shadow: inset 0 -3px 4px rgba(0, 0, 0, 0.5);
+}
+
+.tittleBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 36px;
+}
+
+.tittleBox div {
+    width: 100px;
+    height: 31px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: inset 0 -2px 4px var(--third-color);
+    margin-top: 11px;
+    font-family: var(--font-roboto);
+    font-size: 13px;
+}
