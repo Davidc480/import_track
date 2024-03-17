@@ -1,8 +1,8 @@
 'use client'
 import React, { useState, useEffect } from 'react';
-import style from "./Contador.module.css"
+import style from "./NextOrdersCounter.module.css"
 
-const ContadorCuentaRegresiva = () => {
+const NextOrdersCounter = () => {
 
   const [ activeTab, setActiveTab ] = useState({tabNumber: 0, value: "" })
   
@@ -83,4 +83,4 @@ const ContadorCuentaRegresiva = () => {
   );
 }
 
-export default ContadorCuentaRegresiva;
+export default NextOrdersCounter;

@@ -1,7 +1,7 @@
 import HeaderMobile from "@/Components/HeaderMobile/HeaderMobile";
 import Footer from "@/Components/Footer/Footer";
 import OrderStatusTracker from "@/Components/OrderStatusTracker/OrderStatusTracker";
-import ContadorCuentaRegresiva from "@/Components/Contador/Contador";
+import ContadorCuentaRegresiva from "@/Components/NextOrdersCounter/NextOrdersCounter";
 
 export default function OrderTracker() {
   return (
