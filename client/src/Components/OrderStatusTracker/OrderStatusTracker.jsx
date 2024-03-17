@@ -12,7 +12,7 @@ const OrderStatusTracker = ()=>{
     }
 
     return(
-        <div className="flex flex-col justify-center items-center mt-24">
+        <div className="flex flex-col justify-center items-center mt-16">
             <div className={style.tittle}>
                 <h2>Rastreos</h2>
             </div>

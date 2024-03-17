@@ -1,0 +1,76 @@
+.tittle {
+    position: relative;
+    text-align: center;
+    font-family: var(--font-playfair-display);
+    font-size: 28px;
+}
+
+.tittle h4 {
+    display: inline-block; /* Alinea el texto al centro */
+    position: relative;
+}
+
+.tittle h4::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 2px;
+    background-color: black;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.pestañaContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 80px;
+    gap: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pestaña {
+    background-color: var(--secondary-color);
+    border: none;
+    color: #555;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 15px;
+    outline: none;
+    cursor: pointer;
+    transition: bacground-color 0.3s;
+}
+
+.pestaña.active {
+    box-shadow: inset  0px 5px 5px -5px rgba(0, 0, 0, 1);
+}
+
+.containerAccountant div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerAccountant span {
+    font-family: var(--font-roboto);
+    font-size: 16px;
+    text-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.containerAccountant p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    font-size: 40px;
+    color: rgb(88, 88, 88);
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+    width: 80px;
+    height: 80px;
+    background-color: var(--secondary-color);
+    border-radius: 15px;
+    box-shadow:  0 5px 5px rgba(0, 0, 0, 0.5);
+}

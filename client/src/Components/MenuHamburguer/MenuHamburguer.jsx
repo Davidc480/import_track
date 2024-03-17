@@ -34,7 +34,10 @@ const MenuHamburguer = ()=>{
                     <a href="">Calculadora</a>
                 </li>
                 <li>
-                    <a href="/OrderTracker">Rastrear Pedido</a>
+                    <a href="/orderTracker">Rastrear Pedido</a>
+                </li>
+                <li>
+                    <a href="/nextOrder">Proximos pedidos</a>
                 </li>
                 <li>
                     <a href="">Contacto</a>
