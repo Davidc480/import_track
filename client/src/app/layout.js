@@ -1,5 +1,6 @@
 import { Playfair_Display, Roboto, Raleway, Lato } from "next/font/google";
 import "./globals.css";
+import { StoreProvider } from "@/redux/StoreProvider";
 
 const raleway = Raleway({
   subsets: ["latin"],
@@ -35,7 +36,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${playfairDisplay.variable} ${roboto.variable} ${raleway.variable} ${lato.variable}`}
       >
-        {children}
+        <StoreProvider>{children}</StoreProvider>
       </body>
     </html>
   );

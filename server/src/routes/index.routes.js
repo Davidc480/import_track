@@ -5,4 +5,6 @@ const router = Router();
 
 router.use("/date", dateRouter);
 
+router.use("/counterDate", dateRouter);
+
 module.exports = router;
