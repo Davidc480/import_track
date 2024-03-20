@@ -1,4 +1,4 @@
-const updateStateImportDatePutController = require("../controllers/updateStateImportDatePutController");
+const updateStateImportDatePutController = require("../../controllers/date/updateStateImportDatePutController");
 
 const updateStateImportDatePutHandler = async (req, res) => {
   try {

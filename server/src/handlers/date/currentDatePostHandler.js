@@ -1,6 +1,6 @@
-const { DateEntry } = require("../database");
-const currentDatePostController = require("../controllers/currentDatePostController");
-const verifiDate = require("../helper/verifyDate");
+const { DateEntry } = require("../../database");
+const currentDatePostController = require("../../controllers/date/currentDatePostController");
+const verifiDate = require("../../helper/verifyDate");
 
 const currentDatePostHandler = async (req, res) => {
   try {

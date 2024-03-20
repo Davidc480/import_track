@@ -1,4 +1,4 @@
-const { DateEntry } = require("../database");
+const { DateEntry } = require("../../database");
 
 const importDatesGetController = async () => {
   const findAllImportDates = await DateEntry.findAll({

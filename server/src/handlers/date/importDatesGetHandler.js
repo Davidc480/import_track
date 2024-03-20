@@ -1,4 +1,4 @@
-const importDatesGetController = require("../controllers/importDatesGetController");
+const importDatesGetController = require("../../controllers/date/importDatesGetController");
 
 const importDatesGetHandler = async (req, res) => {
   try {

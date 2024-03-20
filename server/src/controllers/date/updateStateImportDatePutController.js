@@ -1,4 +1,4 @@
-const { DateEntry } = require("../database");
+const { DateEntry } = require("../../database");
 
 const updateStateImportDatePutController = async (date, newState) => {
   const updateStateImportDate = await DateEntry.update(

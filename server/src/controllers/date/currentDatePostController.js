@@ -1,4 +1,4 @@
-const { DateEntry } = require("../database");
+const { DateEntry } = require("../../database");
 
 const currentDatePostController = async (
   dateImport,

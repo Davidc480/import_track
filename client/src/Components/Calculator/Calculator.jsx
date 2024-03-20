@@ -29,7 +29,6 @@ const Calculator = ()=>{
                         <select className={style.selectProduct}>
                             {productsForSelect.map(object => (
                                 <option key={object.nameProduct} value={object.value}>{object.nameProduct} </option>
-
                             ))}
                         </select>
                     </div>

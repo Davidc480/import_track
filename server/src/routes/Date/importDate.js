@@ -1,8 +1,8 @@
 const { Router } = require("express");
-const currentDatePostHandler = require("../../handlers/currentDatePostHandler");
-const importDatesGetHandler = require("../../handlers/importDatesGetHandler");
-const deleteImportDatePutHandler = require("../../handlers/deleteImportDatePutHandler");
-const updateStateImportDatePutHandler = require("../../handlers/updateStateImportDatePutHandler");
+const currentDatePostHandler = require("../../handlers/date/currentDatePostHandler");
+const importDatesGetHandler = require("../../handlers/date/importDatesGetHandler");
+const deleteImportDatePutHandler = require("../../handlers/date/deleteImportDatePutHandler");
+const updateStateImportDatePutHandler = require("../../handlers/date/updateStateImportDatePutHandler");
 
 const dateRouter = Router();
 

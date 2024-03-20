@@ -1,4 +1,4 @@
-const deleteImportDatePutController = require("../controllers/deleteImportDatePutController");
+const deleteImportDatePutController = require("../../controllers/date/deleteImportDatePutController");
 
 const deleteImportDatePutHandler = async (req, res) => {
   try {
