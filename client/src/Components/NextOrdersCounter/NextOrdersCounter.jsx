@@ -13,11 +13,9 @@ const NextOrdersCounter = () => {
   const [ tittleOrderClose, setTittleOrderClose ] = useState("")
 
   useEffect(() => {
-    const intervalo = setInterval(() => {
+   
       setTiempoRestante(calcularTiempoRestante());
-    }, 1000);
-
-    return () => clearInterval(intervalo);
+    
   }, [activeTab]);
 
   useEffect(()=>{

@@ -1,8 +1,10 @@
 const { datesCounter } = require("../../database");
+const calculateTimeMissing = require("../../helper/calculateTimeMissing");
 
 const dateCounterGetController = async () => {
   const findAlldates = await datesCounter.findAll();
-  return findAlldates;
+  const calculateTime = calculateTimeMissing(findAlldates);
+  return calculateTime;
 };
 
 module.exports = dateCounterGetController;
