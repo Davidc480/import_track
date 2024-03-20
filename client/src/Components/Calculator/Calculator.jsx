@@ -1,7 +1,11 @@
 import style from "./Calculator.module.css"
 import { IoInformationCircleOutline } from 'react-icons/io5'
+import productFeeList from "@/helper/productsFeeList"
 
 const Calculator = ()=>{
+
+    const productsForSelect = productFeeList()
+
     return(
         <div className={style.container}>
             <div className={style.tittle}>
@@ -22,10 +26,11 @@ const Calculator = ()=>{
                     </div>
                     <div className={style.inputTypeProduct}>
                         <span>Tipo de Producto</span>
-                        <select>
-                            <option value="opcion1">Selecciona una Opción </option>
-                            <option value="opcion2">Opción 2</option>
-                            <option value="opcion3">Opción 3</option>
+                        <select className={style.selectProduct}>
+                            {productsForSelect.map(object => (
+                                <option key={object.nameProduct} value={object.value}>{object.nameProduct} </option>
+
+                            ))}
                         </select>
                     </div>
                 </div>

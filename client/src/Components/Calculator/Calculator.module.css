@@ -141,3 +141,11 @@
     font-family: var(--font-roboto);
     font-size: 13px;
 }
+
+.selectProduct {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 0px 12px;
+}
+
