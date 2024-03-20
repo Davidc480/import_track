@@ -6,6 +6,6 @@ const dateCounterRoute = Router();
 
 dateCounterRoute.get("/counter", dateCounterGetHandler);
 
-dateCounterRoute.put("/dates-counter", datesBddCounterPutHandler);
+dateCounterRoute.put("/datesCounterCreate", datesBddCounterPutHandler);
 
 module.exports = dateCounterRoute;

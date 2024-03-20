@@ -1,10 +1,11 @@
 const datesBddCounterPutController = require("../../controllers/dateCounter/datesBddCounterPutController");
 
-const datesBddCounterPutHandler = (req, res) => {
+const datesBddCounterPutHandler = async (req, res) => {
   try {
     const { date, brand } = req.body;
 
-    const datesBdd = datesBddCounterPutController(date, brand);
+    const dateFormat = new Date(date);
+    const datesBdd = await datesBddCounterPutController(dateFormat, brand);
 
     res.status(200).json(datesBdd);
   } catch (err) {

@@ -11,6 +11,6 @@ router.use("/dollarPrice", dolarPriceRouter);
 
 router.use("/counterDate", dateRouter);
 
-router.use("/date-counter", dateCounterRoute);
+router.use("/dateCounter", dateCounterRoute);
 
 module.exports = router;

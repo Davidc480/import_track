@@ -10,7 +10,7 @@ dateRouter.get("/import-dates", importDatesGetHandler);
 
 dateRouter.post("/current-import-date", currentDatePostHandler);
 
-dateRouter.put("/delet-import-date", deleteImportDatePutHandler);
+dateRouter.put("/delete-import-date", deleteImportDatePutHandler);
 
 dateRouter.put("/update-state-import-date", updateStateImportDatePutHandler);
 
