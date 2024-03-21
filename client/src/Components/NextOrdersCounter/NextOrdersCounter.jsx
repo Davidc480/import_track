@@ -1,53 +1,55 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import style from "./NextOrdersCounter.module.css"
+import { useAppSelector, useAppDispatch } from '@/redux/reduxHooks';
+import { fetchDateCounter } from '@/redux/reduxSlice/dateCounter/dateCounterSlice';
+import calculateTimeMissing from "@/helper/calculateTimeMissing";
 
 const NextOrdersCounter = () => {
 
   const [ activeTab, setActiveTab ] = useState({tabNumber: 0, value: "" })
-  
-  const fechaObjetivo = activeTab.tabNumber <= 1 ? new Date(2024, 5, 1, 12) : new Date(2024, 4, 1, 10); // Ejemplo: 1 de julio de 2024 a las 12:00 PM
-  
-  const [ tiempoRestante, setTiempoRestante ] = useState(calcularTiempoRestante());
 
-  const [ tittleOrderClose, setTittleOrderClose ] = useState("")
+  const [loading, setLoading] = useState(false);
+
+  
+  const targetDates = useAppSelector((state)=> state.datesCounter.dates)
+  const statusTargetDates = useAppSelector((state)=> state.datesCounter.status)
+  const errorTargetDates = useAppSelector((state)=> state.datesCounter.error)
+  
+  const [timeLeft, setTimeLeft] = useState(targetDates[0])
+
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
-   
-      setTiempoRestante(calcularTiempoRestante());
-    
-  }, [activeTab]);
-
-  useEffect(()=>{
-    if(!tiempoRestante.statusOrder){
-      setTittleOrderClose("El pedido está cerrado actualmente. Mantente al tanto de nuestras redes sociales para la próxima fecha disponible.")
-    } else {
-      setTittleOrderClose("")
+    if (statusTargetDates === 'idle') {
+      setLoading(true);
+      dispatch(fetchDateCounter());
     }
-
-  }, [tiempoRestante])
-
-
-  function calcularTiempoRestante() {
-    const ahora = new Date();
-    const diferencia = fechaObjetivo - ahora;
     
-    if (diferencia <= 0) {
-      return { dias: 0, horas: 0, minutos: 0, segundos: 0};
+ 
+    if (targetDates.length > 0 && activeTab.tabNumber === 0) {
+      // Establecer activeTab con la marca de la primera fecha recibida
+      setActiveTab({ tabNumber: 1, value: targetDates[0].dateBrand });
     }
-
-    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-    const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
-
-    return { dias, horas, minutos, segundos,};
-  }
-
+  }, [statusTargetDates, dispatch, targetDates, activeTab.tabNumber]);
   
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (targetDates.length > 0) {
+        setLoading(false);
+        // Determinar el índice del objeto objetivo
+        const targetIndex = activeTab.value === "Amazon" ? 1 : 0;
+        const remainingTime = calculateTimeMissing(targetDates[targetIndex].date);
+        setTimeLeft(remainingTime);
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [targetDates, activeTab.value]);
 
-  const handleTabClick = (tabNumber, value) => {
-      setActiveTab({tabNumber:tabNumber, value: value})
+
+const handleTabClick = (tabNumber, value) => {
+  setActiveTab({tabNumber:tabNumber, value: value})
+  setLoading(true)
   }
 
   return (
@@ -55,26 +57,34 @@ const NextOrdersCounter = () => {
       <div className={style.tittle}>
         <h4>Proximo pedido</h4>
       </div>
+      <div className={style.subtittle}>
+        <p>El tiempo se agota y el contador avanza. Asegura tus productos antes de que sea demasiado tarde. Cuando el contador llegue a cero, cerraremos los pedidos y tendrás que esperar hasta que volvamos a abrir. ¡No te quedes sin tus favoritos! </p>
+      </div>
       <div className={style.pestañaContainer}>
                 <button className={`${style.pestaña} ${activeTab.tabNumber === 1 ?  style.active : "" }`} onClick={()=> handleTabClick(1, "Shein")} type="button">Shein</button>
                 <button className={`${style.pestaña} ${activeTab.tabNumber === 2 ?  style.active : "" }`} onClick={()=> handleTabClick(2, "Amazon")} type="button">Amazon</button>
+                {loading ? 
+                <div className={style.spinnerContainer}>
+                  <div className={style.spinner}></div>
+                </div>
+                : ""}
             </div>
             <div className={`${style.containerAccountant} flex justify-center items-center mt-16 gap-4`}>
               <div>
                 <span>Días</span>
-                <p>{tiempoRestante.dias}</p>
+                <p>{timeLeft.days}</p>
               </div>
               <div>
                 <span>Horas</span>
-                <p>{tiempoRestante.horas}</p>
+                <p>{timeLeft.hours}</p>
               </div>
               <div>
                 <span>Minutos</span>
-                <p>{tiempoRestante.minutos}</p>
+                <p>{timeLeft.minutes}</p>
               </div>
               <div>
                 <span>Segundos</span>
-                <p>{tiempoRestante.segundos}</p>
+                <p>{timeLeft.seconds}</p>
               </div>
             </div>
     </div>

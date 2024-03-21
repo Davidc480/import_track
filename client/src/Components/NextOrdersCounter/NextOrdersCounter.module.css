@@ -22,10 +22,22 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+.subtittle {
+    width: 361px;
+    height: auto;
+}
+
+.subtittle p {
+    font-family: var(--font-roboto);
+    font-size: 14px;
+    text-align: center;
+    margin-top: 40px;
+}
+
 .pestañaContainer {
     display: flex;
     justify-content: space-between;
-    margin-top: 80px;
+    margin-top: 50px;
     gap: 5px;
     margin-left: auto;
     margin-right: auto;
@@ -74,3 +86,27 @@
     border-radius: 15px;
     box-shadow:  0 5px 5px rgba(0, 0, 0, 0.5);
 }
+
+
+.spinnerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  
+  .spinner {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 5px solid var(--third-color);
+    border-top-color: var(--secondary-color);
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
