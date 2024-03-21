@@ -2,7 +2,7 @@ const calculateTimeMissing = (date) => {
   const now = new Date();
   const difference = new Date(date).getTime() - now.getTime();
 
-  if (difference <= 0) {
+  if (difference <= 0 || date === undefined) {
     return { days: 0, hours: 0, minutes: 0, seconds: 0 };
   }
 
@@ -12,6 +12,7 @@ const calculateTimeMissing = (date) => {
   );
   const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
   const dateBrand = date.dateBrand;
 
   return { days, hours, minutes, seconds, dateBrand };

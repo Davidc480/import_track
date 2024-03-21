@@ -28,7 +28,6 @@ const NextOrdersCounter = () => {
     
  
     if (targetDates.length > 0 && activeTab.tabNumber === 0) {
-      // Establecer activeTab con la marca de la primera fecha recibida
       setActiveTab({ tabNumber: 1, value: targetDates[0].dateBrand });
     }
   }, [statusTargetDates, dispatch, targetDates, activeTab.tabNumber]);
@@ -37,9 +36,8 @@ const NextOrdersCounter = () => {
     const interval = setInterval(() => {
       if (targetDates.length > 0) {
         setLoading(false);
-        // Determinar el índice del objeto objetivo
         const targetIndex = activeTab.value === "Amazon" ? 1 : 0;
-        const remainingTime = calculateTimeMissing(targetDates[targetIndex].date);
+        const remainingTime = targetDates[0].dateBrand === "default" ? targetDates[0] : calculateTimeMissing(targetDates[targetIndex].date);
         setTimeLeft(remainingTime);
       }
     }, 1000);

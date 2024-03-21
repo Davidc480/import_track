@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
         type: DataTypes.DATEONLY,
       },
       importStatus: {
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING,
       },
       isActive: {
         type: DataTypes.BOOLEAN,
