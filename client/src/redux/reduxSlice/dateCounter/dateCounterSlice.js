@@ -6,7 +6,6 @@ export const fetchDateCounter = createAsyncThunk(
   async () => {
     const response = await fetch(`${HOST}/dateCounter/counter`);
     const data = await response.json();
-    console.log(data);
     return data;
   }
 );

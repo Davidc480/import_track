@@ -18,7 +18,7 @@ const NextOrdersCounter = () => {
   
   const [timeLeft, setTimeLeft] = useState(targetDates[0])
 
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (statusTargetDates === 'idle') {

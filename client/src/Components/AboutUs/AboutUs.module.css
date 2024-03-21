@@ -29,3 +29,13 @@
     border-radius: 25px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
   }
+
+.containerPhotosEnd {
+    width: 100px;
+    height: 100px;
+    border-radius: 10%;
+    overflow: hidden;
+    position: relative;
+    background-color: #222;
+    box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.6);
+}

@@ -11,23 +11,27 @@ const AboutUs = ()=>{
             <div className={`${styles.photos} flex justify-center gap-5 mt-8`}>
                 <div className="flex flex-col items-center">
                     <div className={styles.containerPhotos}>
-                        <Image src="/img1.jpg" alt=""  layout="fill" objectFit="cover" />
+                        <Image src="/Img1.jpg" alt=""  layout="fill" objectFit="cover" />
                     </div>
-                    <span className={`${styles.span} mt-3`}>Nombre 1</span>
+                    <span className={`${styles.span} mt-3`}>Kimberly</span>
                 </div>
                 <div className="flex flex-col items-center">
                     <div className={styles.containerPhotos}>
-                        <Image src="/img2.jpg" alt=""  layout="fill" objectFit="cover" />
+                        <Image src="/Img2.jpg" alt=""  layout="fill" objectFit="cover" />
                     </div>
-                    <span className={`${styles.span} mt-3`}>Nombre 2</span>
+                    <span className={`${styles.span} mt-3`}>Franchezca</span>
                 </div>
             </div>
-            <div className="flex justify-center items-center p-4 -mt-20">
+            <div className="flex justify-center items-center p-4 -mt-20 mb-4">
                 <div className={styles.containerText}>
-                    <div className="mx-6 mb-9 mt-24">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Sed nec felis pellentesque, 
-                        suscipit mauris.</p>
+                    <div className="mx-6 mb-9 mt-20">
+                        <p>En un rincón acogedor de la web, Con amor y estilo, seleccionan cuidadosamente cada prenda o artículo para que sus clientes se sientan especiales y vuelvan por más. Juntas, convierten cada compra en una experiencia única y encantadora.</p>
                     </div>
+                </div>
+            </div>
+            <div className="flex justify-center items-center -mt-14">
+                <div className={styles.containerPhotosEnd}>
+                    <Image src="/Img3.jpg" alt=""  layout="fill" objectFit="cover" />
                 </div>
             </div>
         </div>
