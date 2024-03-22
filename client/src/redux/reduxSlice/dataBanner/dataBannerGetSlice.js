@@ -4,7 +4,7 @@ import { HOST } from "@/env";
 export const fetchDataBannerGet = createAsyncThunk(
   "dataBanner/fetchDataBanner",
   async () => {
-    const response = await fetch(`http://localhost:3001/dataBanner/dataBanner`);
+    const response = await fetch(`${HOST}/dataBanner/dataBanner`);
     const data = await response.json();
     return data;
   }

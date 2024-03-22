@@ -70,7 +70,7 @@
 
 .inputPriceProduct span {
     font-family: var(--font-roboto);
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .inputPriceProduct input {
@@ -104,7 +104,7 @@
 
 .inputTypeProduct span {
     font-family: var(--font-roboto);
-    font-size: 12px;
+    font-size: 14px;
     align-self: flex-start;
     margin-left: 10px;
 }
@@ -149,3 +149,7 @@
     padding: 0px 12px;
 }
 
+.notify {
+    font-family: var(--font-roboto);
+    text-align: center;
+}
