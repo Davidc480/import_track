@@ -7,7 +7,9 @@ export default function nextOrder() {
     <main className="flex min-h-screen flex-col items-center mb-10 ">
       <HeaderMobile />
       <NextOrdersCounter />
-      <Footer />
+      <div id="footer">
+        <Footer />
+      </div>
     </main>
   );
 }

@@ -8,7 +8,9 @@ export default function OrderTracker() {
     <main className="flex min-h-screen flex-col items-center mb-10 ">
       <HeaderMobile />
       <OrderStatusTracker />
-      <Footer />
+      <div id="footer">
+        <Footer />
+      </div>
     </main>
   );
 }

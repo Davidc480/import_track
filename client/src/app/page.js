@@ -10,8 +10,12 @@ export default function Home() {
       <HeaderMobile />
       <AboutUs />
       <PromotionalBanner />
-      <Calculator />
-      <Footer />
+      <div id="calculator">
+        <Calculator />
+      </div>
+      <div id="footer">
+        <Footer />
+      </div>
     </main>
   );
 }

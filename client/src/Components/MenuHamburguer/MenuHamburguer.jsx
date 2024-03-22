@@ -31,7 +31,7 @@ const MenuHamburguer = ()=>{
                     <a href="/">Home</a>
                 </li>
                 <li>
-                    <a href="">Calculadora</a>
+                    <a href="/#calculator" onClick={handlerClickButton}>Calculadora</a>
                 </li>
                 <li>
                     <a href="/orderTracker">Rastrear Pedido</a>
@@ -40,7 +40,7 @@ const MenuHamburguer = ()=>{
                     <a href="/nextOrder">Proximos pedidos</a>
                 </li>
                 <li>
-                    <a href="">Contacto</a>
+                    <a href="#footer" onClick={handlerClickButton}>Contacto</a>
                 </li>
             </ul>
             </nav>
