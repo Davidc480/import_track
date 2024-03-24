@@ -4,7 +4,7 @@ const verifiDate = require("../../helper/verifyDate");
 
 const currentDatePostHandler = async (req, res) => {
   try {
-    const { currentDate, importStatus } = req.body;
+    const { currentDate, importStatus, brand } = req.body;
 
     const dateVerify = verifiDate(currentDate);
 
@@ -19,6 +19,7 @@ const currentDatePostHandler = async (req, res) => {
         const currentDateController = await currentDatePostController(
           dateImport,
           importStatus,
+          brand,
           isActive
         );
         res.status(200).json(currentDateController);

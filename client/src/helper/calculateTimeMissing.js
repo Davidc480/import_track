@@ -1,6 +1,8 @@
-const calculateTimeMissing = (date) => {
+const calculateTimeMissing = date => {
   const now = new Date();
   const difference = new Date(date).getTime() - now.getTime();
+
+  console.log(now);
 
   if (difference <= 0 || date === undefined) {
     return { days: 0, hours: 0, minutes: 0, seconds: 0 };

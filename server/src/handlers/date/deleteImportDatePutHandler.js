@@ -2,11 +2,11 @@ const deleteImportDatePutController = require("../../controllers/date/deleteImpo
 
 const deleteImportDatePutHandler = async (req, res) => {
   try {
-    const { date } = req.body;
+    const { date, brand } = req.body;
 
     const isActive = false;
 
-    const deletBdd = await deleteImportDatePutController(isActive, date);
+    const deletBdd = await deleteImportDatePutController(isActive, date, brand);
 
     res.status(200).json(deletBdd);
   } catch (err) {

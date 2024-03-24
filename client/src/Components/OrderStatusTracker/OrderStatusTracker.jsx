@@ -2,14 +2,59 @@
 import style from "./OrderStatusTracker.module.css"
 import { IoInformationCircleOutline } from 'react-icons/io5'
 import React, { useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
+import checkDayFifteen from "@/helper/checkDayFifteen";
 
 const OrderStatusTracker = ()=>{
 
     const [ activeTab, setActiveTab ] = useState({tabNumber: 0, value: "" })
 
+    const [inputValue, setInputValue] = useState("");
+
     const handleTabClick = (tabNumber, value) => {
         setActiveTab({tabNumber:tabNumber, value: value})
     }
+
+    const notify = (event) => {
+        event.preventDefault();
+        toast('Ingresa la fecha en la que hiciste el pedido en el formato: año/mes/día (yyyy/mm/dd).', {
+            id: 'unique-toast',
+            duration: 5000,
+            position: 'bottom-center',
+            className: style.notify
+        });
+    };
+
+    
+    const handleChange = (event) => {
+        let newValue = event.target.value;
+    
+        newValue = newValue.replace(/\D/g, '');
+    
+        if (newValue.length > 8) {
+            newValue = newValue.slice(0, 8);
+        }
+    
+        let formattedValue = '';
+        for (let i = 0; i < newValue.length; i++) {
+            if (i === 4 || i === 6) {
+                formattedValue += '/';
+            }
+            formattedValue += newValue[i];
+        }
+
+        setInputValue(formattedValue);
+    };
+    
+    
+        
+        console.log(inputValue);
+
+    const handleSubmit = (event)=>{
+        event.preventDefault()
+        const { value }= event.target;
+    }
+    
 
     return(
         <div className="flex flex-col justify-center items-center mt-16">
@@ -26,12 +71,13 @@ const OrderStatusTracker = ()=>{
             <div className={style.containerForm}>
                 <form className={style.form} action="">
                     <div className={style.spanIcon}>
-                        <span>Precio del Producto</span>
-                        <span className={style.infoIcon}><IoInformationCircleOutline size={17} color="blue" /></span>
+                        <span>Fecha del pedido</span>
+                        <button className={style.infoIcon} onClick={notify} ><IoInformationCircleOutline size={17} color="blue" /></button>
+                        <Toaster />
                     </div>
-                        <input placeholder="dd/mm/yyyy" type="text" />
+                        <input placeholder="yyyy/dd/mm" type="text" onChange={handleChange} value={inputValue} />
                     <div className={style.button}>
-                        <button>Enviar</button>
+                        <button onClick={handleSubmit} >Enviar</button>
                     </div>
                 </form>
                 <div>

@@ -1,6 +1,6 @@
 const { DataTypes } = require("sequelize");
 
-module.exports = (sequelize) => {
+module.exports = sequelize => {
   sequelize.define(
     "DateEntry",
     {
@@ -11,6 +11,9 @@ module.exports = (sequelize) => {
       },
       dateImport: {
         type: DataTypes.DATEONLY,
+      },
+      brand: {
+        type: DataTypes.TEXT,
       },
       importStatus: {
         type: DataTypes.STRING,

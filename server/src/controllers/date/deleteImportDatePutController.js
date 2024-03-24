@@ -1,11 +1,12 @@
 const { DateEntry } = require("../../database");
 
-const deleteImportDatePutController = async (isActive, date) => {
+const deleteImportDatePutController = async (isActive, date, brand) => {
   const deleteImportDateBdd = await DateEntry.update(
     { isActive: isActive },
     {
       where: {
         dateImport: date,
+        brand: brand,
       },
     }
   );

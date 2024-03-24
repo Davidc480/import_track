@@ -119,3 +119,8 @@
 .pestaña.active {
     box-shadow: inset  0px 5px 5px -5px rgba(0, 0, 0, 1);
 }
+
+.notify {
+    font-family: var(--font-roboto);
+    text-align: center;
+}

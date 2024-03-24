@@ -30,7 +30,9 @@ const Calculator = ()=>{
         dispatch(fetchPriceDollar())
     },[])
     
-    const notify = () => toast('El precio del producto debe ser el precio original en dólares.', {
+    const notify = (event) => 
+    event.preventDefault()
+    toast('El precio del producto debe ser el precio original en dólares.', {
         id: 'unique-toast',
         duration: 5000,
         position: 'bottom-center',
