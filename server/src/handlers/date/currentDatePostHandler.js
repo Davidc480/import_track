@@ -1,6 +1,7 @@
 const { DateEntry } = require("../../database");
 const currentDatePostController = require("../../controllers/date/currentDatePostController");
 const verifiDate = require("../../helper/verifyDate");
+const checkDayFifteen = require("../../helper/checkDayFifteen");
 
 const currentDatePostHandler = async (req, res) => {
   try {
@@ -9,6 +10,10 @@ const currentDatePostHandler = async (req, res) => {
     const dateVerify = verifiDate(currentDate);
 
     const isActive = true;
+
+    const dateIdPost = checkDayFifteen(currentDate);
+
+    console.log(dateIdPost);
 
     if (dateVerify) {
       const verifyExistenceDateBdd = await DateEntry.findOne({
@@ -20,6 +25,7 @@ const currentDatePostHandler = async (req, res) => {
           dateImport,
           importStatus,
           brand,
+          dateIdPost,
           isActive
         );
         res.status(200).json(currentDateController);

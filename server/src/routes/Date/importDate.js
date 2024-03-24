@@ -3,10 +3,13 @@ const currentDatePostHandler = require("../../handlers/date/currentDatePostHandl
 const importDatesGetHandler = require("../../handlers/date/importDatesGetHandler");
 const deleteImportDatePutHandler = require("../../handlers/date/deleteImportDatePutHandler");
 const updateStateImportDatePutHandler = require("../../handlers/date/updateStateImportDatePutHandler");
+const importDateClientGetHandler = require("../../handlers/date/importDateClientGetHandler");
 
 const dateRouter = Router();
 
 dateRouter.get("/import-dates", importDatesGetHandler);
+
+dateRouter.get("/import-date-client", importDateClientGetHandler);
 
 dateRouter.post("/current-import-date", currentDatePostHandler);
 

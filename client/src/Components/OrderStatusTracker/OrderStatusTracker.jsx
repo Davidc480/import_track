@@ -48,11 +48,12 @@ const OrderStatusTracker = ()=>{
     
     
         
-        console.log(inputValue);
-
+    
     const handleSubmit = (event)=>{
         event.preventDefault()
-        const { value }= event.target;
+        const verifyDate = checkDayFifteen(inputValue)
+        console.log(verifyDate);
+        setInputValue("")
     }
     
 
@@ -75,7 +76,7 @@ const OrderStatusTracker = ()=>{
                         <button className={style.infoIcon} onClick={notify} ><IoInformationCircleOutline size={17} color="blue" /></button>
                         <Toaster />
                     </div>
-                        <input placeholder="yyyy/dd/mm" type="text" onChange={handleChange} value={inputValue} />
+                        <input placeholder="yyyy/mm/dd" type="text" onChange={handleChange} value={inputValue} />
                     <div className={style.button}>
                         <button onClick={handleSubmit} >Enviar</button>
                     </div>
