@@ -4,7 +4,7 @@ import NextOrdersCounter from "@/Components/NextOrdersCounter/NextOrdersCounter"
 
 export default function nextOrder() {
   return (
-    <main className="flex min-h-screen flex-col items-center mb-10 ">
+    <main className="flex min-h-screen flex-col items-center mb-10">
       <HeaderMobile />
       <NextOrdersCounter />
       <div id="footer">

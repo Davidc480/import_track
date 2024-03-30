@@ -1,0 +1,56 @@
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 100vh;
+  }
+
+.containerLogin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 400px;
+    height: 400px;
+    background-color: var(--secondary-color);
+    border-radius: 10%;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.containerLogin span {
+    display: flex;
+    margin-bottom: 10px;
+    font-family: var(--font-roboto);
+    font-size: 14px;
+}
+
+.inputContainer {
+    margin-bottom: 60px;
+}
+
+.inputContainer input {
+    width: 216px;
+    height: 31px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    border: none;
+    outline: none;
+    box-shadow:  0 3px 4px rgba(0,0,0, 0.5);
+}
+
+.containerButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 35px;
+    background-color: var(--third-color);
+    border-radius: 10px;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.5);
+}
+
+.containerButton:hover {
+    transform: translateY(2px); /* Mueve el botón ligeramente hacia abajo al pasar el mouse */
+  }
