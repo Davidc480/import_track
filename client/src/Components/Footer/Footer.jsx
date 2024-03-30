@@ -3,12 +3,15 @@ import style from "./Footer.module.css"
 import { FaWhatsapp   } from "react-icons/fa";
 import { IoLogoTiktok } from "react-icons/io5";
 import { FaInstagram } from "react-icons/fa6";
+import { PHONE } from "@/env";
 
 const Footer = ()=>{
     return(
         <div className={style.container}>
                 <div className={style.iconContainer}>
-                    <FaWhatsapp className={style.iconWhatsapp} size={30} />
+                    <a href={`https://api.whatsapp.com/send?phone=${PHONE}&text=Hola, me gustaría obtener más información sobre sus servicios`} target="_blank">
+                        <FaWhatsapp className={style.iconWhatsapp} size={30} />
+                    </a>
                 </div>
                 <div className={style.iconContainer}>
                     <a href="https://www.instagram.com/happy_shopcr_?igsh=MW9oZWpmZ3F4aG1n" target="_blank" rel="noopener noreferrer">
