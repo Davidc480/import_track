@@ -7,7 +7,6 @@ const importDateClientGetHandler = async (req, res) => {
     const isActive = true;
 
     const dateBdd = await importDateClientGetController(id, brand, isActive);
-    console.log(dateBdd);
 
     res.status(200).json(dateBdd);
   } catch (err) {
