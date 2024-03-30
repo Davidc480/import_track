@@ -1,22 +1,37 @@
 'use client'
 import style from "./OrderStatusTracker.module.css"
 import { IoInformationCircleOutline } from 'react-icons/io5'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import checkDayFifteen from "@/helper/checkDayFifteen";
+import { useAppDispatch, useAppSelector } from "@/redux/reduxHooks";
+import { fetchDateStatus } from "@/redux/reduxSlice/dateStatus/dateStatusSlice";
 
 const OrderStatusTracker = ()=>{
+
+    const dispatch = useAppDispatch()
 
     const [ activeTab, setActiveTab ] = useState({tabNumber: 0, value: "" })
 
     const [inputValue, setInputValue] = useState("");
 
+    const dateStatusInfo = useAppSelector((state) => state.dateStatus.date);
+    
+    const [statusDate, setStatusDate] = useState()
+
+    const [stateButton, setStateButton] = useState(true)
+
+
     const handleTabClick = (tabNumber, value) => {
         setActiveTab({tabNumber:tabNumber, value: value})
+        setStatusDate("")
     }
 
-    const notify = (event) => {
-        event.preventDefault();
+    useEffect(()=>{
+        setStatusDate(dateStatusInfo)
+    }, [dateStatusInfo])
+
+    const notify = () => {
         toast('Ingresa la fecha en la que hiciste el pedido en el formato: año/mes/día (yyyy/mm/dd).', {
             id: 'unique-toast',
             duration: 5000,
@@ -27,6 +42,7 @@ const OrderStatusTracker = ()=>{
 
     
     const handleChange = (event) => {
+        event.preventDefault()
         let newValue = event.target.value;
     
         newValue = newValue.replace(/\D/g, '');
@@ -44,18 +60,23 @@ const OrderStatusTracker = ()=>{
         }
 
         setInputValue(formattedValue);
-    };
-    
-    
-        
+    };  
     
     const handleSubmit = (event)=>{
         event.preventDefault()
-        const verifyDate = checkDayFifteen(inputValue)
-        console.log(verifyDate);
+        const dateId = checkDayFifteen(inputValue)
         setInputValue("")
+        const brand = activeTab.value
+        const data = { id: dateId, brand: brand  };
+        dispatch(fetchDateStatus(data));
+        setActiveTab((state)=>({...state, tabNumber: 0}))
+        setStateButton(true)
     }
-    
+
+
+    if(inputValue.length === 10 && activeTab.value !== "" && stateButton){
+        setStateButton(false)
+    }
 
     return(
         <div className="flex flex-col justify-center items-center mt-16">
@@ -70,19 +91,22 @@ const OrderStatusTracker = ()=>{
                 <button className={`${style.pestaña} ${activeTab.tabNumber === 2 ?  style.active : "" }`} onClick={()=> handleTabClick(2, "Amazon")} type="button">Amazon</button>
             </div>
             <div className={style.containerForm}>
-                <form className={style.form} action="">
+                <form className={style.form} action="" onSubmit={handleSubmit}>
                     <div className={style.spanIcon}>
                         <span>Fecha del pedido</span>
-                        <button className={style.infoIcon} onClick={notify} ><IoInformationCircleOutline size={17} color="blue" /></button>
-                        <Toaster />
+                        <button className={style.infoIcon} type="button" onClick={notify} ><IoInformationCircleOutline size={17} color="blue" /></button>
                     </div>
                         <input placeholder="yyyy/mm/dd" type="text" onChange={handleChange} value={inputValue} />
                     <div className={style.button}>
-                        <button onClick={handleSubmit} >Enviar</button>
+                        <button disabled={stateButton}>Enviar</button>
                     </div>
                 </form>
+                        <Toaster />
                 <div>
                     <h3 className={style.requestedTitle}>Estado de tu pedido en {activeTab.value}:</h3>
+                </div>
+                <div className={statusDate === "" ? "" : style.statusDate}>
+                    <p>{statusDate}</p>
                 </div>
             </div>
         </div>

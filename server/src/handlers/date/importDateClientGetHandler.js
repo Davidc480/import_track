@@ -2,20 +2,16 @@ const importDateClientGetController = require("../../controllers/date/importDate
 
 const importDateClientGetHandler = async (req, res) => {
   try {
-    const { brand, dateId } = req.body;
+    const { id, brand } = req.query;
 
     const isActive = true;
 
-    const dateIdBdd = parseInt(dateId);
+    const dateBdd = await importDateClientGetController(id, brand, isActive);
+    console.log(dateBdd);
 
-    const dateBdd = await importDateClientGetController(
-      brand,
-      dateIdBdd,
-      isActive
-    );
     res.status(200).json(dateBdd);
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    res.status(404).json({ error: err.message });
   }
 };
 

@@ -22,6 +22,8 @@ const Calculator = ()=>{
 
     const priceDollar = useAppSelector((state) => state.priceDollar.data.currentPriceDollar);
 
+    const [notifyState, setNotifyState] = useState(false)
+
     useEffect(()=>{
         setPriceProduct(calculatePriceProduct(inputValue, selectedValue, priceDollar));
     },[inputValue, selectedValue])
@@ -30,8 +32,7 @@ const Calculator = ()=>{
         dispatch(fetchPriceDollar())
     },[])
     
-    const notify = (event) => 
-    event.preventDefault()
+    const notify = () => 
     toast('El precio del producto debe ser el precio original en dólares.', {
         id: 'unique-toast',
         duration: 5000,

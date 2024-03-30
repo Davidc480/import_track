@@ -20,9 +20,9 @@ export const dateCounterSlice = createSlice({
     error: null,
   },
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-      .addCase(fetchDateCounter.pending, (state) => {
+      .addCase(fetchDateCounter.pending, state => {
         state.status = "loading";
       })
       .addCase(fetchDateCounter.fulfilled, (state, action) => {
