@@ -6,6 +6,7 @@ const setupDateEntryModel = require("./models/DateEntry");
 const setupDollarModel = require("./models/dollar");
 const setupDatesCounterModel = require("./models/datesCounter");
 const setupDataBannerModel = require("./models/dataBanner");
+const setupUserAdminModel = require("./models/userAdmin");
 
 const { DB_USER, DB_PASSWORD, DB_HOST, DB, DB_PORT } = process.env;
 
@@ -22,6 +23,7 @@ setupDateEntryModel(sequelize);
 setupDollarModel(sequelize);
 setupDatesCounterModel(sequelize);
 setupDataBannerModel(sequelize);
+setupUserAdminModel(sequelize);
 
 module.exports = {
   sequelize,
