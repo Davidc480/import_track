@@ -11,14 +11,14 @@ const DashboardLoginPostController = async (user, password) => {
 
     if (userBdd && checkPassword) {
       return {
-        data: user,
+        login: true,
         tokenSession,
       };
     } else {
-      return false;
+      return { login: false };
     }
   } else {
-    return false;
+    return { login: false };
   }
 };
 
