@@ -9,9 +9,10 @@ const DashboardCreatedPostHandler = async (req, res) => {
       user,
       passwordHash
     );
-    res.status(200).json(createdUser);
+    res.status(201).json({ response: createdUser });
   } catch (err) {
-    res.status(404).json({ error: err.message });
+    console.log(err.message);
+    res.status(500).json({ response: !!!err.message });
   }
 };
 

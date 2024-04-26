@@ -18,7 +18,7 @@
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
 }
 
-.containerLogin span {
+.containerLogin label {
     display: flex;
     margin-bottom: 10px;
     font-family: var(--font-roboto);
