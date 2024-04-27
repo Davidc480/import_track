@@ -25,7 +25,7 @@ const AboutUs = ()=>{
             <div className="flex justify-center items-center p-4 -mt-20 mb-4">
                 <div className={styles.containerText}>
                     <div className="mx-6 mb-9 mt-20">
-                        <p>En un rincón acogedor de la web, Con amor y estilo, seleccionan cuidadosamente cada prenda o artículo para que sus clientes se sientan especiales y vuelvan por más. Juntas, convierten cada compra en una experiencia única y encantadora.</p>
+                        <p>En un rincón acogedor de la web, Con amor y estilo, seleccionan cuidadosamente cada prenda o artículo para que sus clientes se sientan especiales y vuelvan por más. Juntas, convierten cada compra en una experiencia única y encantadora.</p>
                     </div>
                 </div>
             </div>

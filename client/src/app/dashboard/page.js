@@ -1,4 +1,4 @@
-import DashboardLogin from "@/Components/dashboard/DashboardLogin.js/DashboardLogin";
+import DashboardLogin from "@/Components/dashboard/DashboardLogin/DashboardLogin";
 import DashboardHeader from "@/Components/dashboard/DashboardHeader/DashboardHeader";
 
 export default function dashboard() {

@@ -5,7 +5,6 @@ export const fetchPriceDollar = createAsyncThunk(
   async () => {
     const response = await fetch(`${HOST}/dollarPrice/current-price-dolar`);
     const data = await response.json();
-    console.log(data);
     return data;
   }
 );
@@ -18,13 +17,13 @@ export const priceDollarSlice = createSlice({
     error: null,
   },
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-      .addCase(fetchPriceDollar.pending, (state) => {
+      .addCase(fetchPriceDollar.pending, state => {
         state.status = "loading";
       })
       .addCase(fetchPriceDollar.fulfilled, (state, action) => {
-        state.status = "failed";
+        state.status = "success";
         state.data = action.payload;
       })
       .addCase(fetchPriceDollar.rejected, (state, action) => {

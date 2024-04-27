@@ -5,6 +5,7 @@ import dataBannerGetSlice from "./reduxSlice/dataBanner/dataBannerGetSlice";
 import dataBannerPostSlice from "./reduxSlice/dataBanner/dataBannerPostSlice";
 import priceDollarSlice from "./reduxSlice/priceDollar/priceDollarSlice";
 import dateStatusSlice from "./reduxSlice/dateStatus/dateStatusSlice";
+import loginAdminSlice from "./reduxSlice/loginAdmin/loginAdminSlice";
 
 export const store = configureStore({
   reducer: {
@@ -14,5 +15,6 @@ export const store = configureStore({
     dataBannerPost: dataBannerPostSlice,
     priceDollar: priceDollarSlice,
     dateStatus: dateStatusSlice,
+    loginAdmin: loginAdminSlice,
   },
 });
