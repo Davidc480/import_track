@@ -1,6 +1,6 @@
 'use client'
 import style from "./DashboardLogin.module.css";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/redux/reduxHooks";
 import { fetchLoginAdminPost } from "@/redux/reduxSlice/loginAdmin/loginAdminSlice";
@@ -8,10 +8,10 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const DashboardLogin = () => {
   
-  const [formData, setFormData] = useState({
-    // Aquí puedes inicializar los datos del formulari
-  });
-  
+  const [formData, setFormData] = useState({});
+  const [formError, setFormError] = useState(true);
+  const [submitting, setSubmitting] = useState(false); // Agregamos un estado para indicar si se está enviando el formulario
+
   const router = useRouter();
 
   const loginStatus = useAppSelector((state)=> state.loginAdmin.data)
@@ -19,7 +19,7 @@ const DashboardLogin = () => {
   const dispatch = useAppDispatch()
 
   const notify = () => 
-  toast('Credenciales incorre', {
+  toast('Credenciales incorrectas', {
       id: 'unique-toast',
       duration: 5000,
       position: 'bottom-center',
@@ -28,15 +28,15 @@ const DashboardLogin = () => {
 
   useEffect(()=>{
     if(loginStatus.login === true){
-      router.push("/dashboardSign/dashboardHome");
+      router.push("/dashboard/dashboardHome");
       console.log(true);
-    } else {
-      notify()
+    } else if (submitting) { // Verificar si se está enviando el formulario
+      notify();
       console.log(false);
     }
-  }, [loginStatus])
+  }, [loginStatus, submitting]) // Asegúrate de incluir submitting en las dependencias del efecto
 
-    const handleChange = (event) => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({
       ...formData,
@@ -44,11 +44,12 @@ const DashboardLogin = () => {
     });
   };
 
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(fetchLoginAdminPost(formData))
+    setSubmitting(true); // Indicar que se está enviando el formulario
+    dispatch(fetchLoginAdminPost(formData));
   }
+  
   return (
     <div className={style.container}>
       <form onSubmit={handleSubmit}>

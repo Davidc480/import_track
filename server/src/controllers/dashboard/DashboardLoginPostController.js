@@ -1,13 +1,14 @@
 const { userAdmin } = require("../../database");
 const { compare } = require("../../helper/handleBcrypt");
 const { tokenLogin } = require("../../helper/tokenSession");
-const DashboardLoginPostController = async (user, password) => {
-  const userBdd = await userAdmin.findOne({ where: { user } });
+
+const DashboardLoginPostController = async (username, password) => {
+  const userBdd = await userAdmin.findOne({ where: { user: username } });
 
   if (userBdd) {
     const checkPassword = await compare(password, userBdd.password);
 
-    const tokenSession = await tokenLogin(user);
+    const tokenSession = await tokenLogin(username);
 
     if (userBdd && checkPassword) {
       return {

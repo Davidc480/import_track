@@ -2,11 +2,9 @@ const DashboardLoginPostController = require("../../controllers/dashboard/Dashbo
 
 const DashboardLoginPostHandler = async (req, res) => {
   try {
-    const { user, password } = req.body;
+    const { username, password } = req.body;
 
-    console.log(password);
-
-    const loginBdd = await DashboardLoginPostController(user, password);
+    const loginBdd = await DashboardLoginPostController(username, password);
 
     res.status(200).json(loginBdd);
   } catch (err) {
