@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/redux/reduxHooks";
 import { fetchLoginAdminPost } from "@/redux/reduxSlice/loginAdmin/loginAdminSlice";
 import toast, { Toaster } from 'react-hot-toast';
+import Cookies from 'js-cookie';
 
 const DashboardLogin = () => {
   
@@ -27,14 +28,16 @@ const DashboardLogin = () => {
   });
 
   useEffect(()=>{
+    Cookies.remove("jwt")
+  }, [])
+
+  useEffect(()=>{
     if(loginStatus.login === true){
       router.push("/dashboard/dashboardHome");
-      console.log(true);
     } else if (submitting) { // Verificar si se está enviando el formulario
       notify();
-      console.log(false);
     }
-  }, [loginStatus, submitting]) // Asegúrate de incluir submitting en las dependencias del efecto
+  }, [loginStatus, submitting])
 
   const handleChange = (event) => {
     const { name, value } = event.target;
