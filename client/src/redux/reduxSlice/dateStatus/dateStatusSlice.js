@@ -3,10 +3,8 @@ import { HOST } from "@/env";
 
 export const fetchDateStatus = createAsyncThunk(
   "dateStatus/fetchDateStatus",
-  async ({ brand }) => {
-    const response = await fetch(
-      `${HOST}/date/import-date-client?brand=${brand}`
-    );
+  async () => {
+    const response = await fetch(`${HOST}/date/import-dates`);
     const data = await response.json();
     return data;
   }

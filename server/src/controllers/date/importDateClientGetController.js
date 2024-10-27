@@ -1,15 +1,18 @@
 const { DateEntry } = require("../../database");
 
-const importDateClientGetController = async (brand, isActive) => {
-  const dateBdd = await DateEntry.findOne({
+const importDateClientGetController = async isActive => {
+  const dateBdd = await DateEntry.findAll({
     where: {
-      brand,
       isActive,
     },
   });
 
+  console.log(dateBdd);
+
+  const { dateImport, brand, importStatus, dateId } = dateBdd;
+
   const status = dateBdd
-    ? dateBdd.importStatus
+    ? [{ dateImport, brand, importStatus, dateId }]
     : "Si no encuentras tu fecha, tu pedido está pendiente.";
   return status;
 };

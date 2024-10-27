@@ -21,17 +21,31 @@ const OrderStatusTracker = ()=>{
 
     const [stateButton, setStateButton] = useState(true)
 
-
+    
+    
+    
     const handleTabClick = (tabNumber, value) => {
         setActiveTab({tabNumber:tabNumber, value: value})
         setStatusDate("")
     }
+    console.log(dateStatusInfo);
+    
+    useEffect(()=>{
+        dispatch(fetchDateStatus())
+    }, [])
 
     useEffect(()=>{
-        setStatusDate(dateStatusInfo)
-        dispatch(fetchDateStatus({brand: activeTab.value}))
-    }, [dateStatusInfo])
+        if(dateStatusInfo){
+            const datesfilter = dateStatusInfo.filter(dates => dates.brand === activeTab.value)
+            setStatusDate(datesfilter)
+        }
+    }, [activeTab])
 
+    console.log(statusDate);
+    
+    
+    
+    
     const notify = () => {
         toast('Ingresa la fecha en la que hiciste el pedido en el formato: año/mes/día (yyyy/mm/dd).', {
             id: 'unique-toast',
@@ -82,8 +96,12 @@ const OrderStatusTracker = ()=>{
                         <button className={style.infoIcon} type="button" onClick={notify} ><IoInformationCircleOutline size={17} color="blue" /></button>
                     </div>
                         <select placeholder="Selecciona una fecha" id="miSelector" value={inputValue} onChange={handleSubmit}>
-                            <option value={"value"}> Selecciona una fecha</option>
-                            <option value={"value"}> seleccciona 2</option>
+                            <option value="" disabled> Selecciona una fecha</option>
+                            {/* {Object.entries(fechas).map(([key, date]) => (
+                                <option key={key} value={date}>
+                                {date} */}
+                                {/* </option> */}
+                            {/* ))} */}
                             </select>
                 </form>
                         <Toaster />
@@ -91,7 +109,7 @@ const OrderStatusTracker = ()=>{
                     <h3 className={style.requestedTitle}>Estado de tu pedido en {activeTab.value}:</h3>
                 </div>
                 <div className={statusDate === "" ? "" : style.statusDate}>
-                    <p>{statusDate}</p>
+                    {/* <p>{statusDate.importStatus}</p> */}
                 </div>
             </div>
         </div>

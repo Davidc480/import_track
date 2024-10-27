@@ -2,11 +2,9 @@ const importDateClientGetController = require("../../controllers/date/importDate
 
 const importDateClientGetHandler = async (req, res) => {
   try {
-    const { brand } = req.query;
-
     const isActive = true;
 
-    const dateBdd = await importDateClientGetController(brand, isActive);
+    const dateBdd = await importDateClientGetController(isActive);
 
     res.status(200).json(dateBdd);
   } catch (err) {

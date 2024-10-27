@@ -162,6 +162,3 @@
     0%, 100% { transform: translateX(-50%) scale(1); } /* Escala normal */
     50% { transform: translateX(-50%) scale(1.2); } /* Escala aumentada */
   }
-  
-  
-  
