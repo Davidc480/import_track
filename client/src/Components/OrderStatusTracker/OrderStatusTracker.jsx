@@ -3,7 +3,6 @@ import style from "./OrderStatusTracker.module.css"
 import { IoInformationCircleOutline } from 'react-icons/io5'
 import React, { useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
-import checkDayFifteen from "@/helper/checkDayFifteen";
 import { useAppDispatch, useAppSelector } from "@/redux/reduxHooks";
 import { fetchDateStatus } from "@/redux/reduxSlice/dateStatus/dateStatusSlice";
 
@@ -32,6 +31,8 @@ const OrderStatusTracker = ()=>{
     const handleTabClick = (tabNumber, value) => {
         setActiveTab({tabNumber:tabNumber, value: value})
         setStatusDate("")
+        setInputValue("");
+        setImportStatusOrder(".      .      .")
     }
     console.log(dateStatusInfo);
     
@@ -59,12 +60,6 @@ const OrderStatusTracker = ()=>{
             className: style.notify
         });
     };
-
-    
-    const handleChange = (event) => {
-        event.preventDefault()
-        setInputValue(formattedValue);
-    };  
     
     const handleSubmit = (event)=>{
         event.preventDefault()
@@ -76,16 +71,15 @@ const OrderStatusTracker = ()=>{
     const handleSubmitSelector = (event)=>{
         event.preventDefault;
         const selectedValue = event.target.value;
+        setInputValue(selectedValue);
 
         setIsLoading(true);
-        setImportStatusOrder(".  .  .")
+        setImportStatusOrder(".      .      .")
 
         setTimeout(() => {
         const dateSelected = statusDate.find(item => item.dateImport === selectedValue);
 
         setImportStatusOrder(dateSelected.importStatus);
-        const selectedDate = event.target.value;
-        setInputValue(selectedDate);
         setIsLoading(false); // Finaliza el estado de carga
     }, 1000);
 
