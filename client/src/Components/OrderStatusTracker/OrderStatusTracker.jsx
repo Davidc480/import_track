@@ -17,9 +17,14 @@ const OrderStatusTracker = ()=>{
 
     const dateStatusInfo = useAppSelector((state) => state.dateStatus.date);
     
-    const [statusDate, setStatusDate] = useState()
+    const [statusDate, setStatusDate] = useState([])
 
     const [stateButton, setStateButton] = useState(true)
+
+    const [importStatusOrder, setImportStatusOrder] = useState("Si no encuentras tu fecha, tu pedido está pendiente.")
+
+    const [isLoading, setIsLoading] = useState(false);
+
 
     
     
@@ -47,7 +52,7 @@ const OrderStatusTracker = ()=>{
     
     
     const notify = () => {
-        toast('Ingresa la fecha en la que hiciste el pedido en el formato: año/mes/día (yyyy/mm/dd).', {
+        toast('La fecha seleccionada corresponde al día en que se cerró tu pedido.', {
             id: 'unique-toast',
             duration: 5000,
             position: 'bottom-center',
@@ -63,14 +68,28 @@ const OrderStatusTracker = ()=>{
     
     const handleSubmit = (event)=>{
         event.preventDefault()
-        const dateId = checkDayFifteen(inputValue)
         setInputValue("")
-        const brand = activeTab.value
-        const data = { id: dateId, brand: brand  };
-        dispatch(fetchDateStatus(data));
         setActiveTab((state)=>({...state, tabNumber: 0}))
         setStateButton(true)
     }
+
+    const handleSubmitSelector = (event)=>{
+        event.preventDefault;
+        const selectedValue = event.target.value;
+
+        setIsLoading(true);
+        setImportStatusOrder(".  .  .")
+
+        setTimeout(() => {
+        const dateSelected = statusDate.find(item => item.dateImport === selectedValue);
+
+        setImportStatusOrder(dateSelected.importStatus);
+        const selectedDate = event.target.value;
+        setInputValue(selectedDate);
+        setIsLoading(false); // Finaliza el estado de carga
+    }, 1000);
+
+    };
 
 
     if(inputValue.length === 10 && activeTab.value !== "" && stateButton){
@@ -95,21 +114,28 @@ const OrderStatusTracker = ()=>{
                         <span>Fecha del pedido</span>
                         <button className={style.infoIcon} type="button" onClick={notify} ><IoInformationCircleOutline size={17} color="blue" /></button>
                     </div>
-                        <select placeholder="Selecciona una fecha" id="miSelector" value={inputValue} onChange={handleSubmit}>
-                            <option value="" disabled> Selecciona una fecha</option>
-                            {/* {Object.entries(fechas).map(([key, date]) => (
-                                <option key={key} value={date}>
-                                {date} */}
-                                {/* </option> */}
-                            {/* ))} */}
+                        <select id="miSelector" value={inputValue} onChange={handleSubmitSelector}>
+                            <option value="" disabled>Selecciona una fecha</option>
+                            {statusDate.length > 0 ? ( statusDate.map((date, index) => (
+                            <option key={index} value={date.dateImport}>
+                    {date.dateImport}
+            </option>
+        ))
+    ) : (
+        <option value="" disabled>Selecciona una fecha</option>
+    )}
                             </select>
                 </form>
                         <Toaster />
                 <div>
                     <h3 className={style.requestedTitle}>Estado de tu pedido en {activeTab.value}:</h3>
                 </div>
-                <div className={statusDate === "" ? "" : style.statusDate}>
-                    {/* <p>{statusDate.importStatus}</p> */}
+                <div className={style.statusDate}>
+                    {isLoading ? (
+                        <p className={style.loading}>{importStatusOrder}</p>
+                    ) : (
+                        <p>{importStatusOrder}</p>
+                    )}
                 </div>
             </div>
         </div>

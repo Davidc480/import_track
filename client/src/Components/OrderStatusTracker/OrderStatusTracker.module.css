@@ -162,3 +162,27 @@
     0%, 100% { transform: translateX(-50%) scale(1); } /* Escala normal */
     50% { transform: translateX(-50%) scale(1.2); } /* Escala aumentada */
   }
+
+  /* OrderStatusTracker.module.css */
+
+/* Clase para el estado de carga */
+.loading {
+    opacity: 0;
+    transition: opacity 0.75s ease;
+}
+
+/* Clase que se aplica cuando está cargando */
+.loading.show {
+    opacity: 1;
+    transform: translateY(0); /* Regresa a su posición original */
+}
+
+/* Clase para el mensaje de estado */
+.status {
+    opacity: 0;
+    transition: opacity 0.75s ease;
+}
+
+.status.show {
+    opacity: 1;
+}
