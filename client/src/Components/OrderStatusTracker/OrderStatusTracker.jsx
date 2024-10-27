@@ -96,7 +96,12 @@ const OrderStatusTracker = ()=>{
                         <span>Fecha del pedido</span>
                         <button className={style.infoIcon} type="button" onClick={notify} ><IoInformationCircleOutline size={17} color="blue" /></button>
                     </div>
-                        <input placeholder="yyyy/mm/dd" type="text" onChange={handleChange} value={inputValue} />
+                        <select placeholder="Selecciona una fecha" id="miSelector" value={inputValue} onChange={handleSubmit}>
+                            <option value={"value"}> Selecciona una fecha</option>
+                            <option value={"value"}> seleccciona 2</option>
+                            </select>
+
+                        {/* <input placeholder="yyyy/mm/dd" type="text" onChange={handleChange} value={inputValue} /> */}
                     <div className={style.button}>
                         <button disabled={stateButton}>Enviar</button>
                     </div>

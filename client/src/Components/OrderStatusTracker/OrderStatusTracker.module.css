@@ -35,7 +35,7 @@
     margin-top: -60px;
 }
 
-.form input::placeholder {
+.form select::placeholder {
     color: #999;
     font-family: var(--font-roboto);
     font-size: 12px;
@@ -48,10 +48,10 @@
     margin-left: 6px;
 }
 
-.form input {
+.form select{
     width: 216px;
     height: 31px;
-    padding: 10px;
+    padding: 2px;
     border-radius: 5px;
     margin-top: 5px;
     border: none;
