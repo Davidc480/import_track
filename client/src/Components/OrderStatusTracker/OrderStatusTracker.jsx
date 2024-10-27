@@ -29,6 +29,7 @@ const OrderStatusTracker = ()=>{
 
     useEffect(()=>{
         setStatusDate(dateStatusInfo)
+        dispatch(fetchDateStatus({brand: activeTab.value}))
     }, [dateStatusInfo])
 
     const notify = () => {
@@ -43,22 +44,6 @@ const OrderStatusTracker = ()=>{
     
     const handleChange = (event) => {
         event.preventDefault()
-        let newValue = event.target.value;
-    
-        newValue = newValue.replace(/\D/g, '');
-    
-        if (newValue.length > 8) {
-            newValue = newValue.slice(0, 8);
-        }
-    
-        let formattedValue = '';
-        for (let i = 0; i < newValue.length; i++) {
-            if (i === 4 || i === 6) {
-                formattedValue += '/';
-            }
-            formattedValue += newValue[i];
-        }
-
         setInputValue(formattedValue);
     };  
     
@@ -100,11 +85,6 @@ const OrderStatusTracker = ()=>{
                             <option value={"value"}> Selecciona una fecha</option>
                             <option value={"value"}> seleccciona 2</option>
                             </select>
-
-                        {/* <input placeholder="yyyy/mm/dd" type="text" onChange={handleChange} value={inputValue} /> */}
-                    <div className={style.button}>
-                        <button disabled={stateButton}>Enviar</button>
-                    </div>
                 </form>
                         <Toaster />
                 <div>
