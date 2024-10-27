@@ -7,6 +7,7 @@ import { fetchLoginAdminPost } from "@/redux/reduxSlice/loginAdmin/loginAdminSli
 import toast, { Toaster } from 'react-hot-toast';
 import Cookies from 'js-cookie';
 
+
 const DashboardLogin = () => {
   
   const [formData, setFormData] = useState({});
@@ -27,8 +28,35 @@ const DashboardLogin = () => {
       className: style.notify
   });
 
+  useEffect(() => {
+    const handleBackButton = () => {
+      // Aquí puedes realizar la acción que desees cuando el usuario utiliza la flecha hacia atrás
+      console.log('El usuario utilizó la flecha hacia atrás.');
+      // Por ejemplo, podrías redirigirlo a otra página o ejecutar una función específica.
+    };
+
+    window.addEventListener('popstate', handleBackButton);
+
+    return () => {
+      window.removeEventListener('popstate', handleBackButton);
+    };
+  }, []);
+
   useEffect(()=>{
+    
     Cookies.remove("jwt")
+
+    const handleBackButton = () => {
+      Cookies.remove("jwt")
+      location.reload();
+    };
+
+    window.addEventListener('popstate', handleBackButton);
+
+    return () => {
+      window.removeEventListener('popstate', handleBackButton);
+    };
+
   }, [])
 
   useEffect(()=>{

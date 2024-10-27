@@ -9,22 +9,19 @@ const WithAuth = ({ children }) => {
 
   useEffect(() => {
     const token = Cookies.get("jwt");
-    console.log(!token);
-
+  
     const dataJwt = checkJwt(token);
-
-    if (token) {
+    
       if (!dataJwt) {
         if (router.pathname !== "/dashboard") {
           router.push("/dashboard");
         }
         return;
-      }
+      } 
       else if (router.pathname !== "/dashboard") {
         router.push("/dashboard");
       }
       return;
-    }
 
   }, []);
 
