@@ -34,7 +34,6 @@ const OrderStatusTracker = ()=>{
         setInputValue("");
         setImportStatusOrder(".      .      .")
     }
-    console.log(dateStatusInfo);
     
     useEffect(()=>{
         dispatch(fetchDateStatus())
@@ -45,10 +44,7 @@ const OrderStatusTracker = ()=>{
             const datesfilter = dateStatusInfo.filter(dates => dates.brand === activeTab.value)
             setStatusDate(datesfilter)
         }
-    }, [activeTab])
-
-    console.log(statusDate);
-    
+    }, [activeTab])    
     
     
     
