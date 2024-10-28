@@ -1,6 +1,7 @@
 import { Playfair_Display, Roboto, Raleway, Lato } from "next/font/google";
 import "./globals.css";
 import { StoreProvider } from "@/redux/StoreProvider";
+import { AuthProvider } from "@/Components/dashboard/AuthContext/AuthContext";
 
 const raleway = Raleway({
   subsets: ["latin"],
@@ -36,7 +37,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${playfairDisplay.variable} ${roboto.variable} ${raleway.variable} ${lato.variable}`}
       >
-        <StoreProvider>{children}</StoreProvider>
+        <AuthProvider>
+          <StoreProvider>{children}</StoreProvider>
+        </AuthProvider>
       </body>
     </html>
   );

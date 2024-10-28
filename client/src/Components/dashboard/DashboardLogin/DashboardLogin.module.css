@@ -26,7 +26,9 @@
 }
 
 .inputContainer {
+    margin-top: -40px;
     margin-bottom: 60px;
+    z-index: 1;
 }
 
 .inputContainer input {
@@ -38,6 +40,7 @@
     border: none;
     outline: none;
     box-shadow:  0 3px 4px rgba(0,0,0, 0.5);
+    z-index: 2;
 }
 
 .containerButton{
@@ -58,4 +61,29 @@
   .notify {
     font-family: var(--font-roboto);
     text-align: center;
+}
+
+
+.containerPhotos {
+    margin-top: -40px;
+    position: relative; /* Asegúrate de que el contenedor tenga posición relativa */
+    width: 300px; /* Ajusta el tamaño según sea necesario */
+    height: 200px; /* Ajusta el tamaño según sea necesario */
+    overflow: hidden; /* Evitar que la imagen sobresalga del contenedor */
+}
+
+.containerPhotos img {
+    filter: brightness(0) invert(1); /* Hacer la imagen blanca */
+}
+
+.containerPhotos::before {
+    content: ''; /* Necesario para que funcione el pseudo-elemento */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: transparent; /* Fondo transparente */
+    filter: drop-shadow(0px 4px 10px 2px rgba(0, 0, 0, 0.8)) ; /* Sombra negra con profundidad */
+    pointer-events: none; /* Asegura que la sombra no interfiera con interacciones */
 }

@@ -1,3 +1,5 @@
+'use client'
+
 import React, {createContext, useContext, useState, useEffect} from "react";
 
 const AuthContext = createContext();
@@ -11,12 +13,12 @@ export const AuthProvider = ({children}) => {
         setIsAuthenticated(loggedIn === "true");
     }, []);
 
-    const login = ()=>{
+    const login = () => {
         setIsAuthenticated(true);
         localStorage.setItem("isAuthenticated", "true");
     }
 
-    const logout = ()=>{
+    const logout = () => {
         setIsAuthenticated(false);
         localStorage.removeItem("isAuthenticated");
     };
@@ -28,4 +30,4 @@ export const AuthProvider = ({children}) => {
     );
 };
 
-export const useAuth = () => useContext(AuthContext);
+export const  useAuth = () => useContext(AuthContext);

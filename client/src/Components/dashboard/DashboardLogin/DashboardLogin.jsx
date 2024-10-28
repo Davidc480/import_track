@@ -1,110 +1,55 @@
 'use client'
 import style from "./DashboardLogin.module.css";
-import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/reduxHooks";
-import { fetchLoginAdminPost } from "@/redux/reduxSlice/loginAdmin/loginAdminSlice";
 import toast, { Toaster } from 'react-hot-toast';
-import Cookies from 'js-cookie';
+import { useState } from "react";
+
+import { useAuth } from "@/Components/dashboard/AuthContext/AuthContext";
+
+import Image from "next/image";
 
 
-const DashboardLogin = () => {
-  
-  const [formData, setFormData] = useState({});
-  const [formError, setFormError] = useState(true);
-  const [submitting, setSubmitting] = useState(false); // Agregamos un estado para indicar si se está enviando el formulario
 
-  const router = useRouter();
+const DashboardLogin = ({ router }) => {
 
-  const loginStatus = useAppSelector((state)=> state.loginAdmin.data)
+  const [password, setPassword] = useState("");
+  const { login } = useAuth();
 
-  const dispatch = useAppDispatch()
-
-  const notify = () => 
-  toast('Credenciales incorrectas', {
-      id: 'unique-toast',
-      duration: 5000,
-      position: 'bottom-center',
-      className: style.notify
-  });
-
-  useEffect(() => {
-    const handleBackButton = () => {
-      // Aquí puedes realizar la acción que desees cuando el usuario utiliza la flecha hacia atrás
-      console.log('El usuario utilizó la flecha hacia atrás.');
-      // Por ejemplo, podrías redirigirlo a otra página o ejecutar una función específica.
-    };
-
-    window.addEventListener('popstate', handleBackButton);
-
-    return () => {
-      window.removeEventListener('popstate', handleBackButton);
-    };
-  }, []);
-
-  useEffect(()=>{
-    
-    Cookies.remove("jwt")
-
-    const handleBackButton = () => {
-      Cookies.remove("jwt")
-      location.reload();
-    };
-
-    window.addEventListener('popstate', handleBackButton);
-
-    return () => {
-      window.removeEventListener('popstate', handleBackButton);
-    };
-
-  }, [])
-
-  useEffect(()=>{
-    if(loginStatus.login === true){
-      router.push("/dashboard/dashboardHome");
-    } else if (submitting) { // Verificar si se está enviando el formulario
-      notify();
-    }
-  }, [loginStatus, submitting])
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value
+  const notify = () => {
+    toast('Contraseña incorrecta', {
+        id: 'unique-toast',
+        duration: 5000,
+        position: 'bottom-center',
+        className: style.notify
     });
-  };
+};
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setSubmitting(true); // Indicar que se está enviando el formulario
-    dispatch(fetchLoginAdminPost(formData));
+  const handlePasswordSubmit = (e)=>{
+    e.preventDefault();
+    if (password === "admin123") {
+      login();
+      router.push('/dashboard/home');
+    } else {
+      notify()
+    }
   }
-  
+
+
+ 
   return (
     <div className={style.container}>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handlePasswordSubmit}>
         <div className={style.containerLogin}>
+      <div className={style.containerPhotos}>
+        <Image src="/Img4.png" alt=""  layout="fill" objectFit="contain" />
+      </div>
           <div className={style.inputContainer}>
-            <label htmlFor="username">Username</label>
-            <input 
-              type="text" 
-              id="username"
-              name="username"
-              value={formData.username || ''}
-              onChange={handleChange}
-              placeholder="Nombre de usuario"
-            />
-          </div>
-          <div className={style.inputContainer}>
-            <label htmlFor="password">Password</label>
-            <input 
+            <input  
               type="password" 
-              id="password"
-              name="password"
-              value={formData.password || ''}
-              onChange={handleChange}
-              placeholder="Contraseña"/>
+              placeholder="Contraseña"
+              name="username"
+              value={password}
+              onChange={(e)=> setPassword(e.target.value)}
+            />
           </div>
           <div>
             <button className={style.containerButton} type="submit">Enviar</button>
