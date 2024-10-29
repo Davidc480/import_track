@@ -4,14 +4,12 @@ const currentDatePostController = async (
   dateImport,
   importStatus,
   brand,
-  dateId,
   isActive
 ) => {
   const newDateImport = await DateEntry.create({
     dateImport,
     importStatus,
     brand,
-    dateId,
     isActive,
   });
 

@@ -18,9 +18,6 @@ module.exports = sequelize => {
       importStatus: {
         type: DataTypes.STRING,
       },
-      dateId: {
-        type: DataTypes.INTEGER,
-      },
       isActive: {
         type: DataTypes.BOOLEAN,
       },
