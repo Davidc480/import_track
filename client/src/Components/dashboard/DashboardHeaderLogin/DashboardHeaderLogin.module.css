@@ -34,10 +34,19 @@
 
 
 
-.menu{
+.menu button{
     display: flex;
     align-items: center;
-    margin-top: 10px;
+    font-size: 22px;
+    font-family: var(font-lato);
+    color: var(--third-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6), 
+                 -2px -2px 4px rgba(0, 0, 0, 0.6);
+    font-weight: 700;
+    background: none;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    margin-right: 25px;
     width: 33px;
     height: 33px;
     z-index: 1;
