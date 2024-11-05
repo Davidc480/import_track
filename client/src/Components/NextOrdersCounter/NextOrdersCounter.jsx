@@ -14,7 +14,6 @@ const NextOrdersCounter = () => {
   
   const targetDates = useAppSelector((state)=> state.datesCounter.dates)
   const statusTargetDates = useAppSelector((state)=> state.datesCounter.status)
-  const errorTargetDates = useAppSelector((state)=> state.datesCounter.error)
   
   const [timeLeft, setTimeLeft] = useState(targetDates[0])
 

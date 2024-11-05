@@ -1,11 +1,11 @@
 const { where } = require("sequelize");
 const { dollar } = require("../../database");
 
-const currentPriceDolarPutController = async (priceDollar) => {
+const currentPriceDolarPutController = async priceDollar => {
   const verifyPrice = await dollar.findOne();
   if (!verifyPrice) {
     const createPrice = await dollar.create({
-      currentPriceDollar: 499.72,
+      currentPriceDollar: 528.27,
     });
     return createPrice;
   } else {

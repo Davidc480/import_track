@@ -31,6 +31,9 @@ const Calculator = ()=>{
     useEffect(()=>{
         dispatch(fetchPriceDollar())
     },[])
+
+    console.log(priceDollar);
+    
     
     const notify = () => 
     toast('El precio del producto debe ser el precio original en dólares.', {

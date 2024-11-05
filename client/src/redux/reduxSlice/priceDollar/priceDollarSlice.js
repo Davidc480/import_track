@@ -5,6 +5,7 @@ export const fetchPriceDollar = createAsyncThunk(
   async () => {
     const response = await fetch(`${HOST}/dollarPrice/current-price-dolar`);
     const data = await response.json();
+
     return data;
   }
 );
